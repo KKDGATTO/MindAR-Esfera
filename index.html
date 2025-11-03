@@ -1,0 +1,59 @@
+<html>
+<head>
+    <title>MindAR - Componentes de PC (Visualización Simple)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.1/dist/mindar-image-aframe.prod.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v7.2.0/dist/aframe-extras.min.js"></script> 
+</head>
+<body>
+
+    <a-scene mindar-image="imageTargetSrc: targets.mind; maxTrack: 3; debug: true;" 
+             color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights: true"
+             vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+
+        <a-assets>
+            <a-asset-item id="gpu-modelo" src="./assets/gpu_amd_rx_6700_xt.glb"></a-asset-item>
+            <a-asset-item id="ram-modelo" src="./assets/kingston_hyperx_fury_black_ram_module.glb"></a-asset-item>
+            <a-asset-item id="cpu-modelo" src="./assets/am4_cpu__free.glb"></a-asset-item>
+        </a-assets>
+
+        <a-camera 
+            position="0 0 0" 
+            look-controls="enabled: false">
+        </a-camera>
+
+        <a-entity mindar-image-target="targetIndex: 0">
+            <a-entity 
+                gltf-model="#gpu-modelo" 
+                rotation="90 0 0"             
+                position="0 0 0.1"            
+                scale="0.2 0.2 0.2"  
+                animation-mixer>
+            </a-entity>
+        </a-entity>
+
+        <a-entity mindar-image-target="targetIndex: 1">
+            <a-entity 
+                gltf-model="#ram-modelo" 
+                rotation="0 0 0"             
+                position="0 0 0.1"            
+                scale="0.2 0.2 0.2"  
+                animation-mixer>
+            </a-entity>
+        </a-entity>
+
+        <a-entity mindar-image-target="targetIndex: 2">
+            <a-entity 
+                gltf-model="#cpu-modelo" 
+                rotation="0 0 0"             
+                position="0 0 0.1"            
+                scale="0.4 0.4 0.4"  
+                animation-mixer>
+            </a-entity>
+        </a-entity>
+        
+    </a-scene>
+</body>
+</html>
